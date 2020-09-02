@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DesignPatternFacade_Training.Liskov;
 
 namespace DesignPattern
 {
@@ -78,9 +79,34 @@ namespace DesignPattern
 
             }
 
+            Console.WriteLine("########## Liskov Principle ########## ");
 
+            Rectangle rectangle = new Rectangle();
+            rectangle.Height = 3;
+            rectangle.Width = 4;
+            Console.WriteLine($"{rectangle} area is {area(rectangle)}" );
+
+            // Ici cela fonctionne si l'on instancie l'objet Carre
+            Carre carre = new Carre();
+            carre.Height = 5;
+
+            Console.WriteLine($"{carre} area is {area(carre)}");
+            // Maintenant on peut definir l'objet Rectangle comme un carre special
+
+            Rectangle carreSpecial = new Carre();
+            carreSpecial.Height = 4;
+            Console.WriteLine($"{carreSpecial} area is {area(carreSpecial)}"); 
+            // nous obtenons O comme resultat                                                      
+            // pour resoudre ce probleme le principe de Liskov est de definir les Getters et Setters de la classe Herite en virtual                                                   
+            // de faire un override dans la sous classe Carre
+
+            Rectangle carreSpecialModifier = new Carre();
+            carreSpecialModifier.Height = 4;
+            Console.WriteLine($"{carreSpecialModifier} area is {area(carreSpecialModifier)}");
 
             Console.ReadLine();
         }
+
+         public static int area(Rectangle r) => r.Width * r.Height;
     }
 }

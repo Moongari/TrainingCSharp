@@ -43,11 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Liskov\Carre.cs" />
     <Compile Include="Open_ClosedPrinciple\AddSpecification.cs" />
     <Compile Include="Open_ClosedPrinciple\ChooseFilter.cs" />
     <Compile Include="Open_ClosedPrinciple\ColorSpecification.cs" />
     <Compile Include="Open_ClosedPrinciple\IFilter.cs" />
     <Compile Include="Open_ClosedPrinciple\ISpecification.cs" />
+    <Compile Include="Liskov\Rectangle.cs" />
     <Compile Include="Open_ClosedPrinciple\OrSpecification.cs" />
     <Compile Include="Open_ClosedPrinciple\Product.cs" />
     <Compile Include="Open_ClosedPrinciple\ProductFilter.cs" />
