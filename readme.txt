@@ -3,11 +3,11 @@ _(juste en dessous des badges sympatiques à placer)_
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
 
-Une petite description du projet
+Ce training va parcourir l'ensemble des Designs Pattern sur la langage C#
 
 ## Pour commencer
 
-Entrez ici les instructions pour bien débuter avec votre projet...
+Chaque petit Projet exposera les différents pattern 
 
 ### Pré-requis
 
