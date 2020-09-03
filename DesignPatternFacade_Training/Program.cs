@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DesignPatternFacade_Training.Liskov;
 using DesignPatternFacade_Training.InterfaceSegragationPrinciple;
+using DesignPatternFacade_Training.DependecyInjectionPrinciple;
 
 namespace DesignPattern
 {
@@ -23,7 +24,7 @@ namespace DesignPattern
             journal.addEntry("I walking in the street");
             //Console.WriteLine(journal);
             Persistence persistence = new Persistence();
-            String filename = @"c:\temp\journal.txt";
+            //String filename = @"c:\temp\journal.txt";
             //persistence.save(journal, filename, true);
             //Process.Start(filename);
          
@@ -138,6 +139,34 @@ namespace DesignPattern
             myBike.accelerer("SUPER_RIDER",myBike);
             myBike.gears(myBike.Speed, myBike);
             myBike.stopFreinAvant(myBike, true);
+
+
+
+            Console.WriteLine("########## Dependency Injection Principle   ########## ");
+            /*
+             Creation d'un example du principe d'injection de dependance 
+            Nous avons une classe Personne avec des caracteristiques 
+            Nous creons une classe de bas niveau mais plutot que de le faire dependre d'une classe de plus haut niveau
+            nous definissons une Interface donc la classe de bas niveau dependra de l'interface et non d'une classe de haut niveau
+            l'idée etant de reduire le couplage entre les objets
+            Realisons cela :
+            Creons une classe Person , une classe Relation et une Interface IRelationchips
+            et nous desirons recherche ces relations entre les différentes personnes.
+            c'est donc la class Recherche qui va consommer .
+             
+             */
+
+            Personn parent = new Personn() { Name = "Moustafa" };
+            Personn child1 = new Personn() { Name = "Yassine" };
+            Personn child2 = new Personn() { Name = "Ines" };
+
+            var relationShips = new Relationchips();
+
+            relationShips.addRelationShip(parent, child1);
+            relationShips.addRelationShip(parent, child2);
+
+            Research research = new Research(relationShips , parent.Name);
+
 
 
 
