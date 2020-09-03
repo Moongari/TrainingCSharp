@@ -177,7 +177,6 @@ namespace DesignPattern
 
 
 
-
             Console.ReadLine();
 
            
