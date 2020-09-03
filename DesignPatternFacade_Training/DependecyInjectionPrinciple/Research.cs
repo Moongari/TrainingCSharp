@@ -10,6 +10,7 @@ namespace DesignPatternFacade_Training.DependecyInjectionPrinciple
     {
 
         // ici nous integrons l'injection de dependance a l'interface et non a classe 
+        // c'est cette classe de bas niveau consommer vers les classe de haut niveau
         public Research(IRelationShipBrowser browser,String name )
         {
             foreach ( var p in browser.findAllRelation(name))
