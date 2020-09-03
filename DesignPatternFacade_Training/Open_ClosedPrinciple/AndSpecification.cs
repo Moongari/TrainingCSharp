@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DesignPatternFacade_Training.Open_ClosedPrinciple
 {
-    public class AddSpecification<T> : ISpecification<T>
+    public class AndSpecification<T> : ISpecification<T>
     {
 
         ISpecification<T> firstSpec, secondSpec;
 
 
 
-        public AddSpecification(ISpecification<T> first, ISpecification<T> second)
+        public AndSpecification(ISpecification<T> first, ISpecification<T> second)
         {
             if(first == null)
             {

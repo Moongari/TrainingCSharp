@@ -58,7 +58,7 @@
     <Compile Include="InterfaceSegragationPrinciple\Velo.cs" />
     <Compile Include="InterfaceSegragationPrinciple\Voiture.cs" />
     <Compile Include="Liskov\Carre.cs" />
-    <Compile Include="Open_ClosedPrinciple\AddSpecification.cs" />
+    <Compile Include="Open_ClosedPrinciple\AndSpecification.cs" />
     <Compile Include="Open_ClosedPrinciple\ChooseFilter.cs" />
     <Compile Include="Open_ClosedPrinciple\ColorSpecification.cs" />
     <Compile Include="Open_ClosedPrinciple\IFilter.cs" />
