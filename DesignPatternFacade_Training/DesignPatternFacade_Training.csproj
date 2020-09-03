@@ -43,6 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InterfaceSegragationPrinciple\IFreiner.cs" />
+    <Compile Include="InterfaceSegragationPrinciple\IPedaler.cs" />
+    <Compile Include="InterfaceSegragationPrinciple\IVehicule.cs" />
+    <Compile Include="InterfaceSegragationPrinciple\IVehiculeSpeciale.cs" />
+    <Compile Include="InterfaceSegragationPrinciple\Vehicule.cs" />
+    <Compile Include="InterfaceSegragationPrinciple\Velo.cs" />
+    <Compile Include="InterfaceSegragationPrinciple\Voiture.cs" />
     <Compile Include="Liskov\Carre.cs" />
     <Compile Include="Open_ClosedPrinciple\AddSpecification.cs" />
     <Compile Include="Open_ClosedPrinciple\ChooseFilter.cs" />

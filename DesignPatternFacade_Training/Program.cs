@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DesignPatternFacade_Training.Liskov;
+using DesignPatternFacade_Training.InterfaceSegragationPrinciple;
 
 namespace DesignPattern
 {
@@ -104,7 +105,46 @@ namespace DesignPattern
             carreSpecialModifier.Height = 4;
             Console.WriteLine($"{carreSpecialModifier} area is {area(carreSpecialModifier)}");
 
+
+            Console.WriteLine("########## Interface SegragationPrinciple  ########## ");
+            /*le role de du principe de Segregation :
+             * Lorsqu'une interface realise propose de nombreuses methodes certaines classe n'ont pas besoin d'implementer toutes ces methodes
+             * car elle n'en ont pas l'utilité , l'idée etant de proposer ou de consommer que l'on a besoin 
+             * ainsi , il est preferable de creer plusieurs interfaces repondant au seul exigence de ce qui va etre consommé.
+             */
+
+
+            // je cree donc une instance de la classe voiture
+            Console.WriteLine("########## Sans  le principe d'interfaces de Segragation   ########## ");
+
+            Voiture voiture = new Voiture() { Marque = "BMW", Speed = 300, NumberOfWheels1 = 4 };
+
+            voiture.drive(voiture.Speed, voiture);
+            voiture.start(true, voiture);
+            voiture.park(voiture);
+            voiture.stop(true, voiture);
+            // maitenant si je possede un Velo , l'interface IVehicule me fournit des methodes dont je n'ai pas besoin
+            // pour cela je peux grace aux principe d'interfaces creer plusieurs interfaces IPedaler,IRouler,IFreiner et regrouper cela dans une interface
+            // globale du type IVehiculeSpecialFunction 
+
+
+            Console.WriteLine("########## Avec le principe d'interfaces de Segragation   ########## ");
+
+            Velo myBike = new Velo();
+            myBike.NumberOfWheels1 = 2;
+            myBike.Speed = 30;
+
+            // grace au principe d'interface de segragation principle je peux adapter a mon objet ces besoins .
+            myBike.accelerer("SUPER_RIDER",myBike);
+            myBike.gears(myBike.Speed, myBike);
+            myBike.stopFreinAvant(myBike, true);
+
+
+
+
             Console.ReadLine();
+
+           
         }
 
          public static int area(Rectangle r) => r.Width * r.Height;

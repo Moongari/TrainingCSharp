@@ -13,6 +13,12 @@ namespace DesignPatternFacade_Training.Open_ClosedPrinciple
         private String name;
         private Color color;
         private Size size;
+
+        public Size Size { get => size; set => size = value; }
+        public Color Color { get => color; set => color = value; }
+        public string Name { get => name; set => name = value; }
+
+
         public Product(String name,Color color, Size size)
         {
             if(name == null)
@@ -28,8 +34,6 @@ namespace DesignPatternFacade_Training.Open_ClosedPrinciple
 
         }
 
-        public Size Size { get => size; set => size = value; }
-        public Color Color { get => color; set => color = value; }
-        public string Name { get => name; set => name = value; }
+
     }
 }
