@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace DesignPatternFacade_Training.InterfaceSegragationPrinciple
 {
+
+    // ici la classe Velo implement bien l'interface IVehiculeSpeciale qui correspond a son besoin propre et beneficie de heritage de la classe Vehicule par la meme.
     public class Velo : Vehicule, IVehiculeSpeciale<Vehicule>
     {
 

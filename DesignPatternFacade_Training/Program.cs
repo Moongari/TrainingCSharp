@@ -124,6 +124,13 @@ namespace DesignPattern
             voiture.start(true, voiture);
             voiture.park(voiture);
             voiture.stop(true, voiture);
+            Console.WriteLine("########## Deuxieme voiture sans parametre appel du constructeur par defaut  ########## ");
+            Voiture voiture2 = new Voiture();
+            voiture2.drive(voiture2.Speed, voiture2);
+            voiture2.start(true, voiture2);
+            voiture2.park(voiture2);
+            voiture2.stop(true, voiture2);
+
             // maitenant si je possede un Velo , l'interface IVehicule me fournit des methodes dont je n'ai pas besoin
             // pour cela je peux grace aux principe d'interfaces creer plusieurs interfaces IPedaler,IRouler,IFreiner et regrouper cela dans une interface
             // globale du type IVehiculeSpecialFunction 

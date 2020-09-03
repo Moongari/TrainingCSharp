@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DesignPatternFacade_Training.InterfaceSegragationPrinciple
 {
+
+    // cette interface trop globale integre des notions que peuvent pas etre utile pour d'autres classe qui l'implemente
+    // cette classe correspond bien au besoin d'un vehicule tel qu'une voiture mais par contre trop globale pour un vehicule type Velo ou Moto
     interface IVehicule<T>
     {
 
