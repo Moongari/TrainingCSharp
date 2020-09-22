@@ -17,7 +17,7 @@ namespace DesignPattern
 
         static void Main(string[] args)
         {
-            // Design Pattern SOLIDE ici nous allons le premier Single Responsibility Principle
+            // Design Pattern SOLIDE ici nous allons etudier le premier Single Responsibility Principle
             // Dans ce principe chaque classe se charge de ne faire qu'une seule chose.
             Journal journal = new Journal();
             journal.addEntry("I playing guitare");
@@ -37,9 +37,10 @@ namespace DesignPattern
             Product Tree = new Product("Tree", Color.Green, Size.Small);
             Product House = new Product("House", Color.Yellow, Size.Large);
             Product earth = new Product("earth", Color.Red, Size.Large);
+            Product car = new Product("Car", Color.Green, Size.Large);
 
             ProductFilter productFilter = new ProductFilter();
-            Product[] productList = { Tree, House, earth };
+            Product[] productList = { Tree, House, earth ,car};
 
 
             Console.WriteLine("##########old Demonstration without Open_Closed Principle########## ");
@@ -79,6 +80,13 @@ namespace DesignPattern
 
                 Console.WriteLine($"Product Red or Small  : {p.Name.ToString()},{p.Color},{p.Size}");
 
+            }
+
+
+            foreach (var  prod in chooseFilter.Filter(
+                productList,new AndSpecification<Product>(new ColorSpecification(Color.Green),new SizeSpecification(Size.Large))))
+            {
+                Console.WriteLine($"Product Green and large  : {prod.Name.ToString()},{prod.Color},{prod.Size}");
             }
 
             Console.WriteLine("########## Liskov Principle ########## ");
