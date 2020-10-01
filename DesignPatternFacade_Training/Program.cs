@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using DesignPatternFacade_Training.Liskov;
 using DesignPatternFacade_Training.InterfaceSegragationPrinciple;
 using DesignPatternFacade_Training.DependecyInjectionPrinciple;
+using DesignPatternFacade_Training.Pattern_Builder;
 
 namespace DesignPattern
 {
@@ -183,6 +184,27 @@ namespace DesignPattern
             Research research = new Research(relationShips , parent.Name);
 
 
+
+
+            Console.WriteLine("########## DP BUILDER   ########## ");
+
+
+            // ordinary non-fluent builder
+            var builder = new HtmlBuilder("ul");
+            builder.AddChild("li", "hello");
+            builder.AddChild("li", "world");
+            Console.WriteLine(builder.ToString());
+
+            // fluent builder
+            //sb.Clear();
+            builder.Clear(); // disengage builder from the object it's building, then...
+            builder.AddChildFluent("li", "hello").AddChildFluent("li", "world");
+            Console.WriteLine(builder);
+
+            var builderPersonn = new PersonnBuilder("Moon").AddChildFluent("Name", "Roberto").AddChildFluent("Age", 34);
+
+
+            Console.WriteLine(builderPersonn);
 
 
             Console.ReadLine();
