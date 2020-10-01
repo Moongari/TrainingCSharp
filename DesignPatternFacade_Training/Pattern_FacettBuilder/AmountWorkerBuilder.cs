@@ -12,6 +12,7 @@ namespace DesignPatternFacade_Training.Pattern_FacettBuilder
         public AmountWorkerBuilder(Worker worker)
         {
             this.worker = worker;
+
         }
 
         public AmountWorkerBuilder amount(int amounts)

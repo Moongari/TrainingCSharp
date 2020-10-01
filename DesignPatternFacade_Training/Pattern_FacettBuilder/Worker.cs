@@ -10,7 +10,6 @@ namespace DesignPatternFacade_Training.Pattern_FacettBuilder
 
     //on definit une classe Worker ou tout autre objet possible
     //cette classe possede différents attributs et propriétes
-
    // plutot que des crées des constructeurs complexe et long
    //on va faire créer plusieurs objets qui vont implemente cette classe et créer les objets necessaire
    //afin proposer et d'afficher les proprietes de l'objet.
@@ -24,6 +23,7 @@ namespace DesignPatternFacade_Training.Pattern_FacettBuilder
         public string StreetAdress, PostCode, Country;
         //Employement
         public string Compagny, Position;
+
 
         //Salary
         public int amountMonth;
