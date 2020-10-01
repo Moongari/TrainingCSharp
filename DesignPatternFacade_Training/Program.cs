@@ -10,6 +10,7 @@ using DesignPatternFacade_Training.Liskov;
 using DesignPatternFacade_Training.InterfaceSegragationPrinciple;
 using DesignPatternFacade_Training.DependecyInjectionPrinciple;
 using DesignPatternFacade_Training.Pattern_Builder;
+using DesignPatternFacade_Training.Pattern_FacettBuilder;
 
 namespace DesignPattern
 {
@@ -201,12 +202,41 @@ namespace DesignPattern
             builder.AddChildFluent("li", "hello").AddChildFluent("li", "world");
             Console.WriteLine(builder);
 
+            //le but du DP builder est reduire la construction de constructeur trop complique et trop long 
+            // qui peuvent generer des erreurs ou lorsque plusieurs parametre sont necessaires d'etre
+            //passé dans un constructeur on prefera decoupé ceux ci en plusieurs objets que l'on pourra 
+            // ensuite chainé ensemble pour construire l'ensemble du contrat passé au constructeur.
+
+
+            //ici on crée un objet de type PersonnBuilder et on fait appel a ces methodes
             var builderPersonn = new PersonnBuilder("Moon").AddChildFluent("Name", "Roberto").AddChildFluent("Age", 34);
-
-
             Console.WriteLine(builderPersonn);
 
 
+            Console.WriteLine("########## DP FACETTE BUILDER   ########## ");
+
+            var WorkerB = new WorkerBuilder();
+            var worker = WorkerB
+                .AddressPerson
+
+                .Lives("24 RUE D'ECHENOZ")
+                .City("Vesoul")
+
+                .AmountWorker
+                .amount(5789)
+
+                .Info
+
+                .personalInfo("Moustafa", "Moungari")
+                .atCompany("OnePoint");
+
+                
+
+                
+
+
+
+            Console.WriteLine(worker.ToString());
             Console.ReadLine();
 
            

@@ -10,8 +10,10 @@ namespace DesignPatternFacade_Training.Pattern_Builder
     {
         public string _name, _personn, _text;
         public int _age;
+        // on crée une liste d'elements d'objets  MyPersonn
         public List<MyPersonn> Elements = new List<MyPersonn>();
-
+        //on va definir plusieurs constructeurs
+        //possedant chacun des parametres différents.
         public MyPersonn(string name, string text)
         {
             this._name = name;
@@ -26,6 +28,7 @@ namespace DesignPatternFacade_Training.Pattern_Builder
 
         }
 
+        //on definit un constructeur vide par defaut
         public MyPersonn()
         {
 
@@ -33,14 +36,17 @@ namespace DesignPatternFacade_Training.Pattern_Builder
 
 
 
-
+        // on redefinit la methode ToString()
         public override string ToString()
         {
-
-
             return ToStringImpl();
         }
 
+       /// <summary>
+       /// Cette methode appel un objet de type StringBuilder
+       /// dans lequel on va ajouter nos différents elements recuperer du constructeur
+       /// </summary>
+       /// <returns>retourne un StringBuilder </returns>
         private string ToStringImpl()
         {
             var sb = new StringBuilder();
