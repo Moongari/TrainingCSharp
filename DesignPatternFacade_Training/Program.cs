@@ -219,16 +219,16 @@ namespace DesignPattern
             var worker = WorkerB
                 .AddressPerson
 
-                .Lives("24 RUE D'ECHENOZ")
-                .City("Vesoul")
+                .Lives("Street kingdom")
+                .City("ALABAMA")
 
                 .AmountWorker
                 .amount(5789)
 
                 .Info
 
-                .personalInfo("Moustafa", "Moungari")
-                .atCompany("OnePoint");
+                .personalInfo("TOTO", "RIRI")
+                .atCompany("POWERMAN");
 
                 
 
