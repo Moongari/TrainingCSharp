@@ -11,13 +11,18 @@ using DesignPatternFacade_Training.InterfaceSegragationPrinciple;
 using DesignPatternFacade_Training.DependecyInjectionPrinciple;
 using DesignPatternFacade_Training.Pattern_Builder;
 using DesignPatternFacade_Training.Pattern_FacettBuilder;
+using DesignPatternFacade_Training.Pattern_Factory;
+using DesignPatternFacade_Training.Delegate;
+
+using PersonneWorker; // DLL 
 
 namespace DesignPattern
 {
-    class Program
+    static class Program
     {
 
-        static void Main(string[] args)
+        public delegate void getInfo(string param);
+        public static async Task Main(string[] args)
         {
             // Design Pattern SOLIDE ici nous allons etudier le premier Single Responsibility Principle
             // Dans ce principe chaque classe se charge de ne faire qu'une seule chose.
@@ -29,7 +34,7 @@ namespace DesignPattern
             //String filename = @"c:\temp\journal.txt";
             //persistence.save(journal, filename, true);
             //Process.Start(filename);
-         
+
 
             // Design Pattern SOLIDE ici nous allons travailler sur le O Open Closed Principle
 
@@ -42,7 +47,7 @@ namespace DesignPattern
             Product car = new Product("Car", Color.Green, Size.Large);
 
             ProductFilter productFilter = new ProductFilter();
-            Product[] productList = { Tree, House, earth ,car};
+            Product[] productList = { Tree, House, earth, car };
 
 
             Console.WriteLine("##########old Demonstration without Open_Closed Principle########## ");
@@ -78,15 +83,15 @@ namespace DesignPattern
                 new OrSpecification<Product>(
                 new ColorSpecification(Color.Red),
                 new SizeSpecification(Size.Small))))
-                {
+            {
 
                 Console.WriteLine($"Product Red or Small  : {p.Name.ToString()},{p.Color},{p.Size}");
 
             }
 
 
-            foreach (var  prod in chooseFilter.Filter(
-                productList,new AndSpecification<Product>(new ColorSpecification(Color.Green),new SizeSpecification(Size.Large))))
+            foreach (var prod in chooseFilter.Filter(
+                productList, new AndSpecification<Product>(new ColorSpecification(Color.Green), new SizeSpecification(Size.Large))))
             {
                 Console.WriteLine($"Product Green and large  : {prod.Name.ToString()},{prod.Color},{prod.Size}");
             }
@@ -96,7 +101,7 @@ namespace DesignPattern
             Rectangle rectangle = new Rectangle();
             rectangle.Height = 3;
             rectangle.Width = 4;
-            Console.WriteLine($"{rectangle} area is {area(rectangle)}" );
+            Console.WriteLine($"{rectangle} area is {area(rectangle)}");
 
             // Ici cela fonctionne si l'on instancie l'objet Carre
             Carre carre = new Carre();
@@ -107,7 +112,7 @@ namespace DesignPattern
 
             Rectangle carreSpecial = new Carre();
             carreSpecial.Height = 4;
-            Console.WriteLine($"{carreSpecial} area is {area(carreSpecial)}"); 
+            Console.WriteLine($"{carreSpecial} area is {area(carreSpecial)}");
             // nous obtenons O comme resultat                                                      
             // pour resoudre ce probleme le principe de Liskov est de definir les Getters et Setters de la classe Herite en virtual                                                   
             // de faire un override dans la sous classe Carre
@@ -153,7 +158,7 @@ namespace DesignPattern
             myBike.Speed = 30;
 
             // grace au principe d'interface de segragation principle je peux adapter a mon objet ces besoins .
-            myBike.accelerer("SUPER_RIDER",myBike);
+            myBike.accelerer("SUPER_RIDER", myBike);
             myBike.gears(myBike.Speed, myBike);
             myBike.stopFreinAvant(myBike, true);
 
@@ -182,7 +187,7 @@ namespace DesignPattern
             relationShips.addRelationShip(parent, child1);
             relationShips.addRelationShip(parent, child2);
 
-            Research research = new Research(relationShips , parent.Name);
+            Research research = new Research(relationShips, parent.Name);
 
 
 
@@ -230,18 +235,177 @@ namespace DesignPattern
                 .personalInfo("TOTO", "RIRI")
                 .atCompany("POWERMAN");
 
-                
-
-                
-
-
-
             Console.WriteLine(worker.ToString());
+
+
+            Console.WriteLine("########## DP FACETTE BUILDER COMPANY EXAMPLE   ########## ");
+
+            var CompanyWorker = new CompagnyWorkerBuilder();
+            var company = CompanyWorker
+                .OurAddress
+                .address("Silicon Valley")
+                .codePost("345 wall street")
+                .atJob("IT Technologie")
+                .OurTurnOver
+                .turnoverCompany(345590003)
+                .numberWorkerInCompany(200);
+
+            Console.WriteLine(company.ToString());
+
+
+
+            Console.WriteLine("########## DP FACTORY EXAMPLE   ########## ");
+
+            MyTaskFactory x = await MyTaskFactory.CreateTask();
+
+
+            /*   var person = p1Factory.CreatePerson("Moon");
+          var person1 = p1Factory.CreateName("Mous");*/
+
+
+            // ici je declare une classe Static et j'appel les methodes qui correspondent
+            var paul = PersonFactory.CreatePerson("Paul");
+            var albert = PersonFactory.CreatePerson("Albert");
+
+            var Moos = PersonFactory.CreatePerson("Moustafa", 46);
+
+
+
+
+            Console.WriteLine($"{paul.ToString()}");
+            Console.WriteLine($"{albert.ToString()}");
+            Console.WriteLine($"{Moos.ToString()}");
+
+
+
+            Console.WriteLine("########## DELEGATE  ########## ");
+
+            var showActivity = new ShowActivity();
+            var activite = new Activity();
+
+
+            // definition du delegate de type void 
+            Action<Personne> activity = activite.Walk;
+            activity += Courir;
+            activity += activite.sleep;
+            activity += activite.eat;
+
+
+            Func<Personne, String> who = activite.WhoIsWalk;
+
+            showActivity.show(activity, "Eric");
+            showActivity.show(activity, "PAUL");
+
+            String isName = showActivity.whoIs(who, "MOON");
+
+            Console.WriteLine($"My name : {isName}");
+
+            //Appel Delegate de la methode NoActivity
+            Action<string> items = showActivity.NoActivity;
+
+            // expression lambda  et appel via delegate
+            getInfo get = str => { showActivity.NoActivity(str); };
+
+            //expression lambda 
+            //Creation de l'expression + str etant le parametre passsé a la methode.
+            Action<String> items2 = str => { showActivity.NoActivity(str); };
+
+            items2("EINSTEIN");
+            get("TOTO");
+            items("MOUSTAFA");
+            items("ALBERT");
+
+
+
+            Console.WriteLine("########## Lambda expressions  ########## ");
+
+            var agePersonnes = showActivity.getAgePersonne();
+
+            // recherche les personnes qui on plus de definit dans la methode isSuperieurA
+            var ages = agePersonnes.FindAll(isSuperieurA);
+
+            foreach (var item in ages)
+            {
+                Console.WriteLine($"{item.Name} + {item.Age}");
+            }
+
+
+            Console.WriteLine("########## Creation Training DESIGN PATTERN FACETTE BUILDER ########## ");
+
+            var myWorker = new PersonneWorked();
+            var personnebuilder = new PersonneWorkerBuilder();
+
+            var personne = personnebuilder
+                .CodePersonne
+                    .IdPersonne(1)
+                    .CodeClient("CODE_CLIENT V2")
+                    .numeroDevis("DEVIS_1")
+                    .Civilite("MONSIEUR")
+                    .LastName("ROBERTO")
+                    .FirstName("ERICOS")
+                    .EmailAdresse("Ericos.Roberto@hotmail.fr")
+                .locationPersonne
+                    .Adresse("8 rue des Alsaciens")
+                    .CodePostal("45090")
+                    .DateEntree("30/11/2020")
+                    .DateArrivee("13/11/2020")
+                .CalculTaxe
+                    .CalculHT(4000)
+                    .CalculTVA(myWorker.HTaxe, 0.21)
+                    .CalculTTC()
+                    .CalculACOMPTE(35)
+                    .CalculSoldDu();
+
+
+
+
+
+
+
+
+            Console.WriteLine(personne.ToString());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             Console.ReadLine();
 
-           
+
         }
 
-         public static int area(Rectangle r) => r.Width * r.Height;
+
+        //Methode d'extension appelé par un delegate
+        public static void Courir(this Personne pers)
+        {
+            Console.WriteLine($"{pers.Name} court tres vite avec une methode d'extension...");
+        }
+
+        public static int area(Rectangle r) => r.Width * r.Height;
+
+        public static bool isSuperieurA(Personne personne)
+        {
+
+            return personne.Age > 24;
+        }
+
+
+
+
+        
+
+
+
     }
+
 }

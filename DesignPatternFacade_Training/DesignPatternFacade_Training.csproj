@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Delegate\Activity.cs" />
+    <Compile Include="Delegate\Personne.cs" />
+    <Compile Include="Delegate\ShowActivity.cs" />
     <Compile Include="DependecyInjectionPrinciple\IRelationShipBrowser.cs" />
     <Compile Include="DependecyInjectionPrinciple\Personn.cs" />
     <Compile Include="DependecyInjectionPrinciple\Relationchips.cs" />
@@ -78,20 +81,38 @@
     <Compile Include="Pattern_Builder\HtmlElement.cs" />
     <Compile Include="Pattern_Builder\MyPersonn.cs" />
     <Compile Include="Pattern_Builder\PersonnBuilder.cs" />
+    <Compile Include="Pattern_FacettBuilder\AddressCompanyWorkerBuilder.cs" />
     <Compile Include="Pattern_FacettBuilder\AddressPersonBuilder.cs" />
     <Compile Include="Pattern_FacettBuilder\AmountWorkerBuilder.cs" />
+    <Compile Include="Pattern_FacettBuilder\CompagnyWorkerBuilder.cs" />
+    <Compile Include="Pattern_FacettBuilder\CompanyWorker.cs" />
     <Compile Include="Pattern_FacettBuilder\InfoWorkerBuilder.cs" />
+    <Compile Include="Pattern_FacettBuilder\TurnoverCompanyWorkerBuilder.cs" />
     <Compile Include="Pattern_FacettBuilder\Worker.cs" />
     <Compile Include="Pattern_FacettBuilder\WorkerBuilder.cs" />
+    <Compile Include="Pattern_Factory\MyTaskFactory.cs" />
+    <Compile Include="Pattern_Factory\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleResponsability\Journal.cs" />
     <Compile Include="SingleResponsability\Persistence.cs" />
+    <Compile Include="Singleton\IDatabase.cs" />
+    <Compile Include="Singleton\SingletonDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PersonneWorker\PersonneWorker.csproj">
+      <Project>{8850f02d-5c5f-45b3-b89c-88a026cb70c5}</Project>
+      <Name>PersonneWorker</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DatabaseName.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
