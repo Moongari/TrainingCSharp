@@ -334,10 +334,12 @@ namespace DesignPattern
 
             var myWorker = new PersonneWorked();
             var personnebuilder = new PersonneWorkerBuilder();
+            var personnebuilder2 = new PersonneWorkerBuilder();
 
+            PersonneWorkerBuilder[] personneWorkerBuilders = { personnebuilder, personnebuilder2 };
             var personne = personnebuilder
                 .CodePersonne
-                    .IdPersonne(1)
+                    .IdPersonne()
                     .CodeClient("CODE_CLIENT V2")
                     .numeroDevis("DEVIS_1")
                     .Civilite("MONSIEUR")
@@ -357,6 +359,28 @@ namespace DesignPattern
                     .CalculSoldDu();
 
 
+            var personne2 = personnebuilder2
+          .CodePersonne
+              .IdPersonne()
+              .CodeClient("CODE_CLIENT V3")
+              .numeroDevis("DEVIS_11")
+              .Civilite("MADAME")
+              .LastName("GINETTE")
+              .FirstName("ERICA")
+              .EmailAdresse("GINETTE.ERICA@hotmail.fr")
+          .locationPersonne
+              .Adresse("8 rue des chats")
+              .CodePostal("25090")
+              .DateEntree("26/11/2020")
+              .DateArrivee("13/12/2020")
+          .CalculTaxe
+              .CalculHT(3560)
+              .CalculTVA(myWorker.HTaxe, 0.20)
+              .CalculTTC()
+              .CalculACOMPTE(40)
+              .CalculSoldDu();
+
+
 
 
 
@@ -365,19 +389,22 @@ namespace DesignPattern
 
             Console.WriteLine(personne.ToString());
 
+            Console.WriteLine(personne2.ToString());
 
 
+    
+            for (int i = 0; i < personneWorkerBuilders.Length; i++)
+            {
+                var info = personneWorkerBuilders[i].personneWorkeds().Where(p => p.Civilite == "MONSIEUR" || p.Civilite == "MADAME");
+
+                foreach (var item in info)
+                {
+                    Console.WriteLine($"NOM : {item.FirstName}, PRENOM : {item.LastName}");
+                }
+            }
 
 
-
-
-
-
-
-
-
-
-
+         
 
             Console.ReadLine();
 

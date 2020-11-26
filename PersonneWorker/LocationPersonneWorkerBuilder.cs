@@ -19,7 +19,11 @@ namespace PersonneWorker
 
 
 
-
+        /// <summary>
+        /// Indiquer l'adresse de la personne
+        /// </summary>
+        /// <param name="adresse"></param>
+        /// <returns></returns>
         public LocationPersonneWorkerBuilder Adresse (string adresse)
         {
             this._PersonneWorker.AdressePersonnel = adresse;
@@ -27,7 +31,11 @@ namespace PersonneWorker
             return this;
         }
 
-
+        /// <summary>
+        /// indiquer le code postale
+        /// </summary>
+        /// <param name="codepostal"></param>
+        /// <returns></returns>
         public LocationPersonneWorkerBuilder CodePostal(string codepostal)
         {
             this._PersonneWorker.CodePostal = codepostal;
@@ -35,7 +43,11 @@ namespace PersonneWorker
             return this;
         }
 
-
+        /// <summary>
+        /// date d'entree dans le logement
+        /// </summary>
+        /// <param name="dateEntree"></param>
+        /// <returns></returns>
         public LocationPersonneWorkerBuilder DateEntree(string dateEntree)
         {
             this._PersonneWorker.DateStart = dateEntree;
@@ -43,7 +55,11 @@ namespace PersonneWorker
             return this;
         }
 
-
+        /// <summary>
+        /// date de sortie prevue
+        /// </summary>
+        /// <param name="dateArrivee"></param>
+        /// <returns></returns>
         public LocationPersonneWorkerBuilder DateArrivee(string dateArrivee)
         {
             this._PersonneWorker.DateArrived = dateArrivee;

@@ -40,7 +40,7 @@ namespace PersonneWorker
 
 
         /// <summary>
-        /// Calcul dela TVA
+        /// Calcul de la TVA
         /// </summary>
         /// <param name="valeurHT">Recuperation de la Valeur HT</param>
         /// <param name="tva">indique la valeur de la TVA : 0,2 pour 20%</param>
@@ -57,7 +57,10 @@ namespace PersonneWorker
             return this;
 
         }
-
+        /// <summary>
+        /// Calcul du montant TTC
+        /// </summary>
+        /// <returns></returns>
         public CalculTaxePersonneBuilder CalculTTC()
         {
 
@@ -69,6 +72,11 @@ namespace PersonneWorker
 
         }
 
+        /// <summary>
+        /// indiquer la valeur du pourcentage
+        /// </summary>
+        /// <param name="pourcentageAcompte"></param>
+        /// <returns></returns>
         public CalculTaxePersonneBuilder CalculACOMPTE( int pourcentageAcompte)
         {
 
@@ -81,6 +89,10 @@ namespace PersonneWorker
             return this;
 
         }
+        /// <summary>
+        /// Calcul du SOLDE DU
+        /// </summary>
+        /// <returns></returns>
         public CalculTaxePersonneBuilder CalculSoldDu()
         {
 

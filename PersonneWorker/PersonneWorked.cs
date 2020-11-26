@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace PersonneWorker
@@ -44,10 +45,15 @@ namespace PersonneWorker
         public double SoldeDu { get => _SoldeDu; set => _SoldeDu = value; }
         public string Message { get => _message; set => _message = value; }
 
+
         public override string ToString()
         {
             return ToInforPersonneWorker();
         }
+
+
+
+
 
 
 
@@ -87,7 +93,7 @@ namespace PersonneWorker
 
 
 
-
+       
 
 
 

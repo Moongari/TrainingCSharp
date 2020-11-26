@@ -15,7 +15,14 @@ namespace PersonneWorker
 
         protected PersonneWorked _PersonneWorker = new PersonneWorked();
 
+        public static List<PersonneWorked> workeds { get; set; }
 
+        public PersonneWorkerBuilder()
+        {
+
+            workeds = new List<PersonneWorked>();
+
+        }
 
         /// <summary>
         /// Ceci correspond la des getters que l'on pourra ensuite appele 
@@ -23,6 +30,27 @@ namespace PersonneWorker
         public LocationPersonneWorkerBuilder locationPersonne => new LocationPersonneWorkerBuilder(_PersonneWorker);
         public CodePersonneWorkerBuilder CodePersonne => new CodePersonneWorkerBuilder(_PersonneWorker);
         public CalculTaxePersonneBuilder CalculTaxe => new CalculTaxePersonneBuilder(_PersonneWorker);
+
+
+
+
+
+        protected int GenerateId()
+        {
+            Random rd = new Random();
+            int id = rd.Next(1, 500);
+
+            return id;
+        }
+      
+
+
+  
+
+        public IEnumerable<PersonneWorked> personneWorkeds()
+        {
+            yield return _PersonneWorker;
+        }
 
 
         public override string ToString()

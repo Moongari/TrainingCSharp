@@ -12,24 +12,30 @@ namespace PersonneWorker
     public class CodePersonneWorkerBuilder : PersonneWorkerBuilder
     {
 
+        
 
         public CodePersonneWorkerBuilder(PersonneWorked worker)
         {
 
             this._PersonneWorker = worker;
+           
         }
 
-        public CodePersonneWorkerBuilder IdPersonne(int id)
+        public CodePersonneWorkerBuilder IdPersonne()
         {
 
-            if( id >= 0) { id++; }
-            this._PersonneWorker.Id = id;
-
+           
+            this._PersonneWorker.Id = GenerateId();
+       
             return this;
 
         }
 
-
+        /// <summary>
+        /// indiquer un code client
+        /// </summary>
+        /// <param name="codeClient"></param>
+        /// <returns></returns>
         public CodePersonneWorkerBuilder CodeClient(string codeClient)
         {
 
@@ -40,7 +46,11 @@ namespace PersonneWorker
 
         }
 
-
+        /// <summary>
+        /// indiquer un numero de Devis
+        /// </summary>
+        /// <param name="numerodDevis"></param>
+        /// <returns></returns>
         public CodePersonneWorkerBuilder numeroDevis(string numerodDevis)
         {
 
@@ -51,18 +61,26 @@ namespace PersonneWorker
 
         }
 
-
+        /// <summary>
+        /// indiquer la civilite
+        /// </summary>
+        /// <param name="civilite"></param>
+        /// <returns></returns>
         public CodePersonneWorkerBuilder Civilite(string civilite)
         {
 
 
             this._PersonneWorker.Civilite = civilite;
-
+            
             return this;
 
         }
 
-
+        /// <summary>
+        /// indiquer le NOM
+        /// </summary>
+        /// <param name="firstname"></param>
+        /// <returns></returns>
         public CodePersonneWorkerBuilder FirstName(string firstname)
         {
 
@@ -72,7 +90,11 @@ namespace PersonneWorker
             return this;
 
         }
-
+        /// <summary>
+        /// indiquer le Prenom
+        /// </summary>
+        /// <param name="lastName"></param>
+        /// <returns></returns>
         public CodePersonneWorkerBuilder LastName(string lastName)
         {
 
@@ -82,16 +104,23 @@ namespace PersonneWorker
             return this;
 
         }
-
+        /// <summary>
+        /// indiquez un email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public CodePersonneWorkerBuilder EmailAdresse(string email)
         {
 
 
             this._PersonneWorker.Email = email;
-
+            workeds.Add(_PersonneWorker);
             return this;
 
         }
+
+
+        
 
 
     }
