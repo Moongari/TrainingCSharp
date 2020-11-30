@@ -15,6 +15,7 @@ using DesignPatternFacade_Training.Pattern_Factory;
 using DesignPatternFacade_Training.Delegate;
 
 using PersonneWorker; // DLL 
+using DesignPatternFacade_Training.Singleton;
 
 namespace DesignPattern
 {
@@ -404,8 +405,15 @@ namespace DesignPattern
             }
 
 
-         
 
+
+            Console.WriteLine("########## SINGLETON########## ");
+
+
+            var db = SingletonDatabase.Insance;
+            var country = "EUROPE";
+   
+            Console.WriteLine($"{country}  and  {db.GetName(country) }");
             Console.ReadLine();
 
 
